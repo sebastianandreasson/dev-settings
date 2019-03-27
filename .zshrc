@@ -18,16 +18,26 @@ antigen theme robbyrussell
 antigen apply
 
 ################################################################
-# Functions
-################################################################
-itermprofile () {
-  echo -e "\033]50;SetProfile=$1\a"
-}
-
-################################################################
-# Scripts
+# React-Native
 ################################################################
 
-SCRIPT_PATH=$PATH:$HOME/bin
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-alias dockerPush="sh $SCRIPT_PATH/dockerPush.sh"
+################################################################
+# SYSTEM/LIB SETTINGS
+################################################################
+
+# Python stuff
+export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
+export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
+export PYENV_ROOT="/usr/local/opt/pyenv"
+export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+
+export PATH="$PATH:./node_modules/.bin"
+
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/sqlite/lib"
+export CPPFLAGS="-I/usr/local/opt/sqlite/include"
